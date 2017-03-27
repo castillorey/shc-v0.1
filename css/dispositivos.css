@@ -1,0 +1,37 @@
+
+	.form-signin {
+		max-width: 730px;
+		padding: 15px;
+		margin: 0 auto;
+	}
+	.col-centered {
+		display:inline-block;
+		float:none;
+		text-align:left;
+		margin-right:-4px;
+	}
+	.col-min {
+		min-width:340px;
+	}
+	.vertical-center{
+		text-align: center;
+		position: relative;
+		top: 20%;
+		-ms-transform: translateY(-50%);
+		-webkit-transform: translateY(-50%);
+		transform: translateY(25%);
+	}
+	.vertical-center2{
+		text-align: center;
+		position: relative;
+		top: 20%;
+		-ms-transform: translateY(-50%);
+		-webkit-transform: translateY(-50%);
+		transform: translateY(1%);
+	}
+	*[hidden] { display: none; }
+	@media only screen and (min-width: 720px) {
+		#botonAgregarSHC {
+			display:none;
+		}
+	}
