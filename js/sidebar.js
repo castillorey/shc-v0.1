@@ -1,3 +1,6 @@
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
 $(function () {
     $('.navbar-toggle').click(function () {
         $('.navbar-nav').toggleClass('slide-in');

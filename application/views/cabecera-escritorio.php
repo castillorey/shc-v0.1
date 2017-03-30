@@ -8,21 +8,21 @@
     <link href="<?php echo base_url('css/bootstrap.min.css'); ?>" rel="stylesheet">
 
     <!--google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500" rel="stylesheet">
 
     <!-- font icon -->
     <link href="<?php echo base_url('css/font-awesome.min.css'); ?>" rel="stylesheet" /> 
     
     <link href="<?php echo base_url('css/sidebar.css'); ?>" rel="stylesheet" /> 
-    <link href="<?php echo base_url('css/tomas.css'); ?>" rel="stylesheet" /> 
+    <link href="<?php echo base_url('css/mystyle.css'); ?>" rel="stylesheet" /> 
     
 
-	<title>SHC-2</title>
+	<title>SHC v0.1</title>
 </head>
   
   <style>
     *{
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
     
   </style>

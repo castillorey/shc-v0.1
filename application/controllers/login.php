@@ -10,15 +10,14 @@ class Login extends CI_Controller {
 	{
 		
 		if($this->session->userdata('usuario')){
-			redirect('escritorio');
+			redirect('tomas');
 		}
 		if(!isset($_SESSION['alert'])){
 			$this->session->set_userdata('alert');		
 		}
-		$data["home"]= "";
+		
 		$data["login"]= "active";
 		$data["signin"]= "";
-		$data["disp"]= "";
 		$data["alert"] = $this->session->userdata('alert');
 
 		$this->load->view('cabecera',$data);
@@ -37,7 +36,7 @@ class Login extends CI_Controller {
 
 				if($this->login_model->login($this->input->post("txtCorreo"),md5($this->input->post("txtPassword")))){
 					$this->session->set_userdata('usuario',$this->input->post("txtCorreo"));
-					redirect('escritorio');
+					redirect('tomas');
 				}else{
 					
 					$alert = "Usuario o contraseña incorrecta. Si no estas registrado hazlo <a href='login/signin' class='alert-link'>aquí</a>";

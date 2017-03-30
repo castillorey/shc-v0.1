@@ -8,7 +8,142 @@ class Tomas extends CI_Controller {
 
 	public function index()
 	{	
-		$this->load->view('tomas',$data);
+		if(!$this->session->userdata('usuario')){
+			redirect('login');
+		}
+		if(!isset($_SESSION['alert'])){
+			$this->session->set_userdata('alert');		
+		}
+		
+		$data['seccionSHC'] = "active";
+		$data['seccionDisp'] = "";
+		$data['seccionHorarios'] = "";
+		
+		$data["user"] = $this->session->userdata('usuario');
+		$data["alert"] = $this->session->userdata('alert');
+
+
+		$this->load->model('tomas_model');
+		$this->load->model('horarios_model');
+
+		$data["horarios"] = $this->horarios_model->listar();
+
+		$tomas = $this->tomas_model->listar();
+			
+
+		$this->load->view('cabecera-escritorio',$data);
+		$this->load->view('menu');
+
+			$this->load->view('cabecera-tomas',$data);
+
+			if($tomas != null){
+
+				if($data['alert'] != ""){
+					$this->load->view('alert',$data);
+				}
+				
+				foreach ($tomas as $toma){
+
+						$data['tomas'] = $tomas;
+						$data['ubicacion'] = $toma['ubicacion'];
+						$data['nombreD1'] = $toma['dispositivo1']; 
+						$data['nombreD2'] = $toma['dispositivo2']; 
+
+						if($toma["estado"] == "1"){
+
+						//Dispositivo 1
+
+							if($data['nombreD1'] == ""|| $data['nombreD1'] == "tv" || $data['nombreD1'] == "stereo" || $data['nombreD1'] == "lamp" || $data['nombreD1'] == "cooler" || $data['nombreD1'] == "lavadora" || $data['nombreD1'] == "joystick" ){
+
+								$data['imgD1'] = base_url("img/".$toma['dispositivo1']."-green.svg");
+							}else{
+
+								$data['imgD1'] = base_url("img/flash-green.svg");
+							}
+							
+						//Dispositivo 2
+							if($data['nombreD2'] == ""|| $data['nombreD2'] == "tv" || $data['nombreD2'] == "stereo" || $data['nombreD2'] == "lamp" || $data['nombreD2'] == "cooler" || $data['nombreD2'] == "lavadora" || $data['nombreD2'] == "joystick" ){
+
+								$data['imgD2'] = base_url("img/".$toma['dispositivo2']."-green.svg");
+							}else{
+
+								$data['imgD2'] = base_url("img/flash-green.svg");
+							}
+
+						}else{
+
+						//Dispositivo 1
+							if($data['nombreD1'] == ""|| $data['nombreD1'] == "tv" || $data['nombreD1'] == "stereo" || $data['nombreD1'] == "lamp" || $data['nombreD1'] == "cooler" || $data['nombreD1'] == "lavadora" || $data['nombreD1'] == "joystick" ){
+
+								$data['imgD1'] = base_url("img/".$toma['dispositivo1'].".svg");
+							}else{
+
+								$data['imgD1'] = base_url("img/flash.svg");
+							}
+
+						//Dispositivo 2
+							if($data['nombreD2'] == ""|| $data['nombreD2'] == "tv" || $data['nombreD2'] == "stereo" || $data['nombreD2'] == "lamp" || $data['nombreD2'] == "cooler" || $data['nombreD2'] == "lavadora" || $data['nombreD2'] == "joystick" ){
+
+								$data['imgD2'] = base_url("img/".$toma['dispositivo2'].".svg");
+							}else{
+
+								$data['imgD2'] = base_url("img/flash.svg");
+							}
+						}
+						
+
+						//Toma Full
+						if($toma['dispositivo1'] != "" && $toma['dispositivo2'] != ""){
+							$this->load->view('cabecera-panel',$data);
+							$this->load->view('toma-full',$data);	
+						}
+						//Toma vacio
+						else if($toma['dispositivo1'] == "" && $toma['dispositivo2'] == ""){
+							$this->load->view('cabecera-panel',$data);
+							$this->load->view('toma-vacio',$data);
+							
+
+						}
+						//Toma con Dispositivo 1
+						else if($toma['dispositivo1'] != "" && $toma['dispositivo2'] == ""){
+							$this->load->view('cabecera-panel',$data);
+							$this->load->view('toma-full-izqu',$data);
+							
+
+
+						}
+						//Toma con Dispositivo 2
+						else if($toma['dispositivo1'] == "" && $toma['dispositivo2'] != ""){
+							$this->load->view('cabecera-panel',$data);
+							$this->load->view('toma-full-der',$data);
+
+						}
+
+					$this->load->view('modal-disp-1',$data);
+					$this->load->view('modal-disp-2',$data);
+				}
+
+			}else{
+				$this->load->view('sinTomas',$data);
+			}
+
+			$this->load->view('modal-horarios-cabecera');
+
+				if($data['horarios'] != null){
+					$this->load->view('horarios',$data);
+				}else{
+					$this->load->view('sinHorarios');
+				}
+			
+
+			
+			$this->load->view('modal-horarios-pie',$data);	
+			$this->load->view('modal-agregar-horario',$data);
+
+			$this->load->view('modal-tomas',$data);
+			$this->load->view('pie-tomas');
+		$this->session->set_userdata('alert');
+		$this->load->view('pie');
 	}
 	
 	public function agregar(){
@@ -21,20 +156,20 @@ class Tomas extends CI_Controller {
 
 				$alert = "Debe ingresar una ubicación.";
 				$this->session->set_userdata('alert', $alert);
-				redirect("escritorio");
+				redirect("tomas");
 			}
 
 			if(trim($this->input->post("txtIdphoton")) == ""){
 
 				$alert = "Debe ingresar el Id del SHC.";
 				$this->session->set_userdata('alert', $alert);
-				redirect("escritorio");
+				redirect("tomas");
 			}
 			else if($this->tomas_model->agregar($_POST['txtIdphoton'],$_POST['txtUbicacion'])){
 
 				$alert = "SHC agregado exitosamente.";
 				$this->session->set_userdata('alert', $alert);
-				redirect("escritorio");
+				redirect("tomas");
 			
 
 			}else{
@@ -42,14 +177,14 @@ class Tomas extends CI_Controller {
 				$alert =  "No pueden existir dos ubicaciones con el mismo nombre.<br>
 				 <b>Consejo:</b> Enumere sus SHC de una misma zona. Ej: Sala 1, Sala 2, etc.";
 				$this->session->set_userdata('alert', $alert);
-				redirect("escritorio");
+				redirect("tomas");
 			}	
 		}
 	}
 	public function encender_apagar($ubicacion){
 		$this->load->model('dispositivos_model');
 		$this->dispositivos_model->encender_apagar($ubicacion);
-		redirect('escritorio');
+		redirect('tomas');
 	}
 	public function encender($ubicacion){
 		$this->load->model('dispositivos_model');
@@ -58,7 +193,7 @@ class Tomas extends CI_Controller {
 			$this->session->set_userdata('alert',$alert);
 		}
 			
-		redirect('escritorio');
+		redirect('tomas');
 	}
 	public function apagar($ubicacion){
 		$this->load->model('dispositivos_model');
@@ -67,12 +202,12 @@ class Tomas extends CI_Controller {
 			$this->session->set_userdata('alert',$alert);
 		}
 		
-		redirect('escritorio');
+		redirect('tomas');
 	}
 	public function eliminar($ubicacion){
 		$this->load->model('tomas_model');
 		$this->tomas_model->eliminar($ubicacion);
-		redirect('escritorio');
+		redirect('tomas');
 		
 	}
 

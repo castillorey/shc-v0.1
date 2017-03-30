@@ -1,5 +1,5 @@
 <!-- Modal dispositivo2-->
-<div class="modal fade agregarDisp2" tabindex="-1" role="dialog">
+<div class="modal fade agregarDisp2" id="<?php echo $ubicacion."ModalDisp2";?>" tabindex="-1" role="dialog">
 	<div class="modal-dialog" role="modal">
 		<div class="modal-content">
 			<!-- Header-->
@@ -25,7 +25,7 @@
 							<option value="otro">Otro</option>
 						</select>
 
-						<input type="text" id="otroD2" name="txtAgregarOtro" class="form-control" placeholder="Nombre del dispositivo" style="display:none;">
+						<input type="text" id="<?php echo $ubicacion;?>otroD2" name="txtAgregarOtro" class="form-control" placeholder="Nombre del dispositivo" style="display:none;">
 						<input type="submit" name="btnagregarDisp" value="Agregar" class="btn btn-success">
 					</div>
 				</form>
@@ -36,3 +36,17 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	function opcionOtro2(opcion){
+		switch	(opcion){
+
+				case "otro":
+					document.getElementById("<?php echo $ubicacion;?>otroD2").style.display = "inline";
+				break;
+
+				default:
+					document.getElementById("<?php echo $ubicacion;?>otroD2").style.display = "none";
+
+			}
+	}
+</script>

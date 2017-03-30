@@ -14,10 +14,9 @@ class Signin extends CI_Controller {
 		if(!isset($_SESSION['alert'])){
 			$this->session->set_userdata('alert');		
 		}
-		$data["home"]= "";
+
 		$data["login"]= "";
 		$data["signin"]= "active";
-		$data["disp"]= "";
 		$data["alert"] = $this->session->userdata('alert');
 
 		$this->load->view('cabecera',$data);
@@ -72,7 +71,7 @@ class Signin extends CI_Controller {
 				}
 				else {
 					
-					$alert = "Este correo ya se encuentra registrado, porfavor ingrese uno diferente. <a href='login' class='alert-link'>aquí</a>";
+					$alert = "Este correo ya se encuentra registrado, porfavor ingrese uno diferente.";
 					$this->session->set_userdata('alert', $alert);
 					redirect("signin");
 				}

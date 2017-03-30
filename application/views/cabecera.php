@@ -8,12 +8,11 @@
     <link href="<?php echo base_url('css/bootstrap.min.css'); ?>" rel="stylesheet">
 
     <!--google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500" rel="stylesheet">
 
     <!-- font icon -->
     <link href="<?php echo base_url('css/font-awesome.min.css'); ?>" rel="stylesheet" /> 
     <!--Mis estilos-->
-    <link href="<?php echo base_url().'css/login.css'; ?>" rel="stylesheet">
     <link href="<?php echo base_url().'css/login.css'; ?>" rel="stylesheet">
 
 	<title>SHC-2</title>
@@ -21,7 +20,7 @@
   
   <style>
     *{
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
     
   </style>

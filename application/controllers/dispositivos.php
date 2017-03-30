@@ -19,7 +19,7 @@ class Dispositivos extends CI_Controller {
 					$alert = "Debe seleccionar un tipo de dispositivo.";
 
 				$this->session->set_userdata('alert', $alert);
-				redirect("escritorio");
+				redirect("tomas");
 			}
 
 			if($this->input->post('selTipoDisp') == "otro"){
@@ -29,13 +29,13 @@ class Dispositivos extends CI_Controller {
 					$alert ="Digite un nombre para el dispositivo.";
 
 				$this->session->set_userdata('alert', $alert);
-				redirect("escritorio");
+				redirect("tomas");
 				
 
 				}else{
 
 					if($this->dispositivos_model->agregar($this->input->post("txtAgregarOtro"),$this->input->post("txtTipoD"),$this->input->post("txtUbic"))){
-					redirect("escritorio");
+					redirect("tomas");
 					}
 
 				}
@@ -46,7 +46,7 @@ class Dispositivos extends CI_Controller {
 			else{
 
 				if($this->dispositivos_model->agregar($_POST['selTipoDisp'],$_POST['txtTipoD'],$_POST['txtUbic'])){
-					redirect("escritorio");
+					redirect("tomas");
 				}
 			}
 		}

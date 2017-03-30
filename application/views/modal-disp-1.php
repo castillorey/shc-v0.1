@@ -1,5 +1,5 @@
 <!-- Modal dispositivo1-->
-<div class="modal fade agregarDisp1" tabindex="-1" role="dialog">
+<div class="modal fade" id="<?php echo $ubicacion."ModalDisp1";?>" tabindex="-1" role="dialog">
 	<div class="modal-dialog" role="modal">
 		<div class="modal-content">
 			<!-- Header-->
@@ -14,7 +14,7 @@
 					<div class="form-group">
 						<input type="text" name="txtUbic" class="sr-only" value="<?php echo $ubicacion;?>">
 						<input type="text" name="txtTipoD" class="sr-only" value="dispositivo1">
-						<select id="combo" name="selTipoDisp" class="form-control" onchange="opcionOtro(combo.value)">
+						<select id="combo" name="selTipoDisp" class="form-control" onchange="opcionOtro1(combo.value)">
 							<option value="none">----</option>
 							<option value="tv">TV</option>
 							<option value="stereo">Stereo</option>
@@ -25,7 +25,7 @@
 							<option value="otro">Otro</option>
 						</select>
 
-						<input type="text" id="otroD" name="txtAgregarOtro" class="form-control" placeholder="Nombre del dispositivo" style="display:none;">
+						<input type="text" id="<?php echo $ubicacion;?>otroD1" name="txtAgregarOtro" class="form-control" placeholder="Nombre del dispositivo" style="display:none;">
 						<input type="submit" name="btnagregarDisp" value="Agregar" class="btn btn-success">
 					</div>
 				</form>
@@ -36,3 +36,17 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	function opcionOtro1(opcion){
+		switch	(opcion){
+
+				case "otro":
+					document.getElementById("<?php echo $ubicacion;?>otroD1").style.display = "inline";
+				break;
+
+				default:
+					document.getElementById("<?php echo $ubicacion;?>otroD1").style.display = "none";
+
+			}
+	}
+</script>

@@ -45,9 +45,9 @@
 					<h4 style="color:white;">Escritorio</h4>
 				</div>
 
-	            <li class="active"><a href="#"><span class="glyphicon glyphicon-flash"></span> SHC's</a></li>
-	            <li class=""><a href="#"><span class="glyphicon glyphicon-lamp"></span> Dispositivos</a></li>
-	            <li class=""><a href="#"><span class="glyphicon glyphicon-calendar"></span> Horarios</a></li>
+	            <li class="<?php echo $seccionSHC;?>"><a href="<?php echo site_url('tomas');?>"><span class="glyphicon glyphicon-flash"></span> SHC's</a></li>
+	            <li class="<?php echo $seccionDisp;?>"><a href="#"><span class="glyphicon glyphicon-lamp"></span> Dispositivos</a></li>
+	            <li class="<?php echo $seccionHorarios;?>"><a href="<?php echo site_url('horarios'); ?>"><span class="glyphicon glyphicon-calendar"></span> Horarios</a></li>
 
 
 	            <li style="background-color: #d9534f;"><a style="color:white;" href="<?php echo site_url('logout'); ?>"><span class="glyphicon glyphicon-remove"></span> Cerrar sesión</a></li>

@@ -3,16 +3,16 @@
 		<div class="panel-heading">
           <!--Izquierda-->
           <div class="widget-icons pull-left">
-            <a type="button" href="#" title="Agregar horario" data-toggle="modal" data-target=".agregarHorario"><i class="fa fa-calendar-plus-o"></i></a>
+            <a type="button" href="#" title="Agregar horario" data-toggle="modal" data-target=".agregarHorario"><i class="fa fa-calendar-plus-o" data-toggle="tooltip" data-placement="right" title="Agregar horario"></i></a>
             &nbsp;
           </div>
 
            <!--Derecha-->
           <div class="widget-icons pull-right"> 
             
-            <a class="delete" type="button" href="<?php echo site_url('tomas/eliminar/'.$ubicacion.''); ?>" title="Eliminar SHC"><i class="fa fa-trash-o"></i></a>
+            <a class="delete" type="button" href="<?php echo site_url('tomas/eliminar/'.$ubicacion.''); ?>" title="Eliminar SHC"><i class="fa fa-trash-o" data-toggle="tooltip" data-placement="left" title="Eliminar SHC"></i></a>
             &nbsp;
-            <a type="button" href="<?php echo site_url('horarios/verificar/'.$ubicacion.''); ?>" title="Eliminar SHC"><i class="fa fa-check"></i></a>
+            <a type="button" href="<?php echo site_url('horarios/verificar/'.$ubicacion.''); ?>" title="Eliminar SHC"><i class="fa fa-check" data-toggle="tooltip" data-placement="right" title="Verificar horario"></i></a>
           </div> 
 
           <div class="clearfix"></div>

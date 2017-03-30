@@ -69,9 +69,7 @@
     color:white !important;
 }
 /*Buttons CSS*/
-.agregar-green{
-    color: #5cb85c;
-}
+
 .delete{
     color:#d9534f;
 }  
@@ -82,7 +80,7 @@
     width: 47px;
     height: 47px;
     padding: 0;
-    background-color: #00C851;
+    background-color: #5cb85c;
     border-radius: 50%;
     display:scroll;
     position:fixed;

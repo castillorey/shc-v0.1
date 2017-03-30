@@ -14,12 +14,17 @@
 		
 		<div class="row">
 			<div class="col-lg-12" style="padding: 0px 15px 40px 15px;">
-				<div class="widget-icons pull-left">
-					<a class="agregar-green btn-floating waves-effect" type="button" href="#" title="Agregar horario" data-toggle="modal" data-target=".agregarTomas"><i class="fa fa-plus" data-toggle="tooltip" data-placement="right" title="Agregar horario"></i></a>
+			<!-- Boton horarios-->
+				<div class="widget-icons pull-left" data-toggle="tooltip" data-placement="rigth" title="Ver horarios">
+					<a type="button" href="#" title="Ver horarios" data-toggle="modal" data-target=".verHorarios" ><img width="45px" src="<?php echo base_url('img/calendar-color.svg');?>"></a>
+
+				</div>	
+
+			<!--Boton agregar-->
+				<div>
+					<a class="btn-floating" type="button" href="#" title="Agregar SHC" data-toggle="modal" data-target=".agregarTomas"><i class="fa fa-plus"></i></a>
 				</div>
-				<div class="widget-icons pull-right">
-					<a type="button" href="#" title="Ver horarios" data-toggle="modal" data-target=".verHorarios" ><i class="fa fa-calendar fa-2x" data-toggle="tooltip" data-placement="left" title="Ver horarios"></i></a>
-				</div>			
+				
 			</div>
-	</div>
+		</div>
 		

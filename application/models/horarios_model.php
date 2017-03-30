@@ -3,12 +3,23 @@
 class Horarios_model extends CI_Model {
 	
 	public function listar(){
+		$user = $this->session->userdata('usuario');
+
+    	$query = $this->db->get('usuarios');
+
+		foreach ($query->result() as $row)
+		{
+		        if($row->correo === $user ){
+		        	$idUser = $row->idusuario;
+		        }
+		}
+
     	$horarios = array();
 
 		
-		$this->db->select('idhorario,dia , hora_encendido , hora_apagado , ubicacionCajadetomas');
-		$query = $this->db->get('horarios');
-		
+		$this->db->select('idhorario, dia , hora_encendido , hora_apagado , ubicacionCajadetomas');
+		$query = $this->db->get_where('horarios', array('usuarios_idusuario' => $idUser));
+
 		$horarios=$query->result_array();
 		
 
@@ -27,6 +38,17 @@ class Horarios_model extends CI_Model {
 		return $ubicTomas;
     }
     public function verificar(){
+		$user = $this->session->userdata('usuario');
+
+    	$query = $this->db->get('usuarios');
+
+		foreach ($query->result() as $row)
+		{
+		        if($row->correo === $user ){
+		        	$idUser = $row->idusuario;
+		        }
+		}
+
 		date_default_timezone_set('America/Bogota');
 		setlocale(LC_ALL,"es_CO");	
 		$HA=date("H:i:s");	
@@ -34,6 +56,7 @@ class Horarios_model extends CI_Model {
 		$D=$dias[date("w")];
 		$this->db->select('*');
 		$this->db->from('horarios as h');
+		$this->db->where('usuarios_idusuario', $idUser);
 		$this->db->where('h.dia', $D);
 		$this->db->where('h.hora_encendido <', $HA);
 		$this->db->where('h.hora_apagado >', $HA);
@@ -47,7 +70,17 @@ class Horarios_model extends CI_Model {
 	public function agregar($dia,$horaInicio,$horaFin,$ubicacion){
     	$retorno = false;
 		
-			
+			$user = $this->session->userdata('usuario');
+
+	    	$query = $this->db->get('usuarios');
+
+			foreach ($query->result() as $row)
+			{
+			        if($row->correo === $user ){
+			        	$idUser = $row->idusuario;
+			        }
+			}
+
 			$query = $this->db->get_where('cajasdetomas', array("ubicacion" => $ubicacion));
 
 			foreach ($query->result() as $row)
@@ -57,7 +90,7 @@ class Horarios_model extends CI_Model {
 				       }
 				}
 
-			if($this->db->insert('horarios', array("dia"=>$dia,"hora_encendido"=>$horaInicio, "hora_apagado"=>$horaFin,"cajasdetomas_idcajasdetomas"=>$idCT,"ubicacionCajadetomas"=>$ubicacion))){
+			if($this->db->insert('horarios', array("dia"=>$dia,"hora_encendido"=>$horaInicio, "hora_apagado"=>$horaFin,"cajasdetomas_idcajasdetomas"=>$idCT,"usuarios_idusuario" => $idUser,"ubicacionCajadetomas"=>$ubicacion))){
 				$retorno=true;
 			}
 
