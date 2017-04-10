@@ -1,6 +1,6 @@
 <!-- Modal dispositivo1-->
 <div class="modal fade" id="<?php echo $ubicacion."ModalDisp1";?>" tabindex="-1" role="dialog">
-	<div class="modal-dialog" role="modal">
+	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<!-- Header-->
 			<div class="modal-header modal-blue" align="center">
@@ -17,11 +17,12 @@
 						<select id="combo" name="selTipoDisp" class="form-control" onchange="opcionOtro1(combo.value)">
 							<option value="none">----</option>
 							<option value="tv">TV</option>
-							<option value="stereo">Stereo</option>
-							<option value="lamp">Lampara</option>
-							<option value="cooler">Ventilador</option>
+							<option value="estereo">Estereo</option>
+							<option value="lampara">Lampara</option>
+							<option value="ventilador">Ventilador</option>
 							<option value="lavadora">Lavadora</option>
-							<option value="joystick">Videojuego</option>
+							<option value="micro">Micro Ondas</option>
+							<option value="videojuego">Videojuego</option>
 							<option value="otro">Otro</option>
 						</select>
 
@@ -31,7 +32,7 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 			</div>
 		</div>
 	</div>

@@ -40,26 +40,25 @@ class Tomas_model extends CI_Model {
     }
 	public function agregar($idPh,$ubicacion){
     	$retorno=false;
-		
+    	
+		$user = $this->session->userdata('usuario');
+
+    	$query = $this->db->get('usuarios');
+		foreach ($query->result() as $row)
+		{
+		       if($row->correo == $user){
+		       	$idUsuario = $row->idusuario;
+		       }
+		}
+
 			$this->db->select('count(*) as cantidad');
 			$this->db->from('cajasdetomas');
+			$this->db->where('usuarios_idusuario', $idUsuario);
 			$this->db->where('ubicacion', $ubicacion);
 			$result=$this->db->get();
 			$cantidad=$result->result_array();
 
 			if($cantidad[0]["cantidad"]==0){
-
-				$user = $this->session->userdata('usuario');
-				$query = $this->db->get_where('usuarios', array("correo" => $user));
-
-				foreach ($query->result() as $row)
-				{
-				       if($row->correo == $user){
-				       	$idUsuario = $row->idusuario;
-				       }
-				}
-
-
 
 				$this->db->from('cajasdetomas');
 				$this->db->where('usuarios_idusuario', $idUsuario);
@@ -73,7 +72,17 @@ class Tomas_model extends CI_Model {
 		return $retorno;
     }
     public function eliminar($ubicacion){
-    		$this->db->delete('cajasdetomas', array('ubicacion' => $ubicacion));
+    	$user = $this->session->userdata('usuario');
+
+    	$query = $this->db->get('usuarios');
+		foreach ($query->result() as $row)
+		{
+		       if($row->correo == $user){
+		       	$idUsuario = $row->idusuario;
+		       }
+		}
+		$this->db->delete('cajasdetomas', array('ubicacion' => $ubicacion));
+		$this->db->delete('horarios', array('usuarios_idusuario' => $idUsuario));
     }
 
 

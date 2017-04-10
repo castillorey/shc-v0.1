@@ -53,7 +53,7 @@ class Tomas extends CI_Controller {
 
 						//Dispositivo 1
 
-							if($data['nombreD1'] == ""|| $data['nombreD1'] == "tv" || $data['nombreD1'] == "stereo" || $data['nombreD1'] == "lamp" || $data['nombreD1'] == "cooler" || $data['nombreD1'] == "lavadora" || $data['nombreD1'] == "joystick" ){
+							if($data['nombreD1'] == ""|| $data['nombreD1'] == "tv" || $data['nombreD1'] == "estereo" || $data['nombreD1'] == "lampara" || $data['nombreD1'] == "ventilador" || $data['nombreD1'] == "lavadora" || $data['nombreD1'] == "videojuego" || $data['nombreD1'] == "micro" ){
 
 								$data['imgD1'] = base_url("img/".$toma['dispositivo1']."-green.svg");
 							}else{
@@ -62,7 +62,7 @@ class Tomas extends CI_Controller {
 							}
 							
 						//Dispositivo 2
-							if($data['nombreD2'] == ""|| $data['nombreD2'] == "tv" || $data['nombreD2'] == "stereo" || $data['nombreD2'] == "lamp" || $data['nombreD2'] == "cooler" || $data['nombreD2'] == "lavadora" || $data['nombreD2'] == "joystick" ){
+							if($data['nombreD2'] == ""|| $data['nombreD2'] == "tv" || $data['nombreD2'] == "estereo" || $data['nombreD2'] == "lampara" || $data['nombreD2'] == "ventilador" || $data['nombreD2'] == "lavadora" || $data['nombreD2'] == "videojuego" || $data['nombreD1'] == "micro" ){
 
 								$data['imgD2'] = base_url("img/".$toma['dispositivo2']."-green.svg");
 							}else{
@@ -73,7 +73,7 @@ class Tomas extends CI_Controller {
 						}else{
 
 						//Dispositivo 1
-							if($data['nombreD1'] == ""|| $data['nombreD1'] == "tv" || $data['nombreD1'] == "stereo" || $data['nombreD1'] == "lamp" || $data['nombreD1'] == "cooler" || $data['nombreD1'] == "lavadora" || $data['nombreD1'] == "joystick" ){
+							if($data['nombreD1'] == ""|| $data['nombreD1'] == "tv" || $data['nombreD1'] == "estereo" || $data['nombreD1'] == "lampara" || $data['nombreD1'] == "ventilador" || $data['nombreD1'] == "lavadora" || $data['nombreD1'] == "videojuego" || $data['nombreD1'] == "micro" ){
 
 								$data['imgD1'] = base_url("img/".$toma['dispositivo1'].".svg");
 							}else{
@@ -82,7 +82,7 @@ class Tomas extends CI_Controller {
 							}
 
 						//Dispositivo 2
-							if($data['nombreD2'] == ""|| $data['nombreD2'] == "tv" || $data['nombreD2'] == "stereo" || $data['nombreD2'] == "lamp" || $data['nombreD2'] == "cooler" || $data['nombreD2'] == "lavadora" || $data['nombreD2'] == "joystick" ){
+							if($data['nombreD2'] == ""|| $data['nombreD2'] == "tv" || $data['nombreD2'] == "estereo" || $data['nombreD2'] == "lampara" || $data['nombreD2'] == "ventilador" || $data['nombreD2'] == "lavadora" || $data['nombreD2'] == "videojuego" || $data['nombreD1'] == "micro" ){
 
 								$data['imgD2'] = base_url("img/".$toma['dispositivo2'].".svg");
 							}else{
@@ -119,28 +119,29 @@ class Tomas extends CI_Controller {
 
 						}
 
-					$this->load->view('modal-disp-1',$data);
-					$this->load->view('modal-disp-2',$data);
+					$this->load->view('modal-agregar-disp-1',$data);
+					$this->load->view('modal-agregar-disp-2',$data);
+					$this->load->view('modal-editar-disp-1',$data);
+					$this->load->view('modal-editar-disp-2',$data);
 				}
 
 			}else{
 				$this->load->view('sinTomas',$data);
 			}
+				//Modal ver Horarios   						// Modal 3
+				$this->load->view('modal-horarios-cabecera');
 
-			$this->load->view('modal-horarios-cabecera');
+					if($data['horarios'] != null){
+						$this->load->view('horarios',$data);
+					}else{
+						$this->load->view('sinHorarios');
+					}
+				
+				$this->load->view('modal-horarios-pie',$data);
 
-				if($data['horarios'] != null){
-					$this->load->view('horarios',$data);
-				}else{
-					$this->load->view('sinHorarios');
-				}
-			
 
-			
-			$this->load->view('modal-horarios-pie',$data);	
-			$this->load->view('modal-agregar-horario',$data);
-
-			$this->load->view('modal-tomas',$data);
+			$this->load->view('modal-agregar-horario',$data); //modal 2
+			$this->load->view('modal-tomas',$data); //Modal 1
 			$this->load->view('pie-tomas');
 		$this->session->set_userdata('alert');
 		$this->load->view('pie');
@@ -152,7 +153,7 @@ class Tomas extends CI_Controller {
 
 		if($this->input->post("btnaAgregarToma")){	
 
-			if(trim($this->input->post("txtUbicacion")) == " "){
+			if(trim($this->input->post("txtUbicacion")) == ""){
 
 				$alert = "Debe ingresar una ubicación.";
 				$this->session->set_userdata('alert', $alert);
@@ -167,7 +168,7 @@ class Tomas extends CI_Controller {
 			}
 			else if($this->tomas_model->agregar($_POST['txtIdphoton'],$_POST['txtUbicacion'])){
 
-				$alert = "SHC agregado exitosamente.";
+				$alert = "SHC agregado.";
 				$this->session->set_userdata('alert', $alert);
 				redirect("tomas");
 			

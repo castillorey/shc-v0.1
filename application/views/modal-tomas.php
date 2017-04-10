@@ -1,6 +1,6 @@
 <!-- Modal tomas-->
-<div class="modal fade agregarTomas" role="dialog">
-	<div class="modal-dialog" role="dialog">
+<div class="modal fade agregarTomas " tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<!-- Header -->
 			<div class="modal-header modal-green" align="center">
@@ -12,7 +12,7 @@
 			<div align="center" class="modal-body">
 				<form class="form-inline" method="POST" action="tomas/agregar">
 					<div class="form-group">
-						<input class="form-control"  type="text" name="txtUbicacion" placeholder="Zona de la casa" required>
+						<input class="form-control"  type="text" name="txtUbicacion" placeholder="Zona de la casa" required autofocus>
 					</div>
 
 					<div class="form-group">

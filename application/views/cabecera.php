@@ -15,7 +15,7 @@
     <!--Mis estilos-->
     <link href="<?php echo base_url().'css/login.css'; ?>" rel="stylesheet">
 
-	<title>SHC-2</title>
+	<title>SHC-v0.1</title>
 </head>
   
   <style>

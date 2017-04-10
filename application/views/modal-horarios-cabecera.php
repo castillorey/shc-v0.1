@@ -1,5 +1,5 @@
 <!-- Modal Horarios-->
-<div class="modal fade verHorarios"  role="dialog">
+<div class="modal fade verHorarios" tabindex="-1"  role="dialog">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 
