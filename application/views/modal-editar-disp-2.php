@@ -27,7 +27,7 @@
 						</select>
 
 						<input type="text" id="<?php echo $ubicacion;?>otroD2" name="txtAgregarOtro" class="form-control" placeholder="Nombre del dispositivo" style="display:none;">
-						<input type="submit" name="btnagregarDisp" value="Agregar" class="btn btn-success">
+						<input type="submit" name="btnagregarDisp" value="Editar" class="btn btn-info">
 					</div>
 				</form>
 			</div>

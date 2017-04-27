@@ -16,6 +16,7 @@ class Horarios extends CI_Controller {
 	$data['seccionSHC'] = "";
 	$data['seccionDisp'] = "";
 	$data['seccionHorarios'] = "active";
+	$data['tipoSeccion'] = 'Horarios';
 
 	$data["user"] = $this->session->userdata('usuario');
 	$data["alert"] = $this->session->userdata('alert');
@@ -24,7 +25,7 @@ class Horarios extends CI_Controller {
 
 	$this->load->view('cabecera-escritorio',$data);
 	$this->load->view('menu');
-		$this->load->view('cabecera-horarios',$data);
+	$this->load->view('cabecera-contenido',$data);
 
 	$data["horarios"] = $this->horarios_model->listar();
 
@@ -38,6 +39,7 @@ class Horarios extends CI_Controller {
 		$this->load->view('modal-horarios-pie',$data);	
 		$this->load->view('modal-agregar-horario',$data);
 		
+	$this->load->view('pie-contenido');
 	$this->session->set_userdata('alert');
 	$this->load->view('pie');
 	}

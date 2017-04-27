@@ -10,7 +10,7 @@ class Login extends CI_Controller {
 	{
 		
 		if($this->session->userdata('usuario')){
-			redirect('tomas');
+			redirect('escritorio');
 		}
 		if(!isset($_SESSION['alert'])){
 			$this->session->set_userdata('alert');		
@@ -36,7 +36,7 @@ class Login extends CI_Controller {
 
 				if($this->login_model->login($this->input->post("txtCorreo"),md5($this->input->post("txtPassword")))){
 					$this->session->set_userdata('usuario',$this->input->post("txtCorreo"));
-					redirect('tomas');
+					redirect('escritorio');
 				}else{
 					
 					$alert = "Usuario o contraseña incorrecta. Si no estas registrado hazlo <a href='login/signin' class='alert-link'>aquí</a>";

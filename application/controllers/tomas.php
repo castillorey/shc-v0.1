@@ -18,6 +18,7 @@ class Tomas extends CI_Controller {
 		$data['seccionSHC'] = "active";
 		$data['seccionDisp'] = "";
 		$data['seccionHorarios'] = "";
+		$data['tipoSeccion'] = "SHC's";
 		
 		$data["user"] = $this->session->userdata('usuario');
 		$data["alert"] = $this->session->userdata('alert');
@@ -33,6 +34,7 @@ class Tomas extends CI_Controller {
 
 		$this->load->view('cabecera-escritorio',$data);
 		$this->load->view('menu');
+		$this->load->view('cabecera-contenido',$data);
 
 			$this->load->view('cabecera-tomas',$data);
 
@@ -142,7 +144,7 @@ class Tomas extends CI_Controller {
 
 			$this->load->view('modal-agregar-horario',$data); //modal 2
 			$this->load->view('modal-tomas',$data); //Modal 1
-			$this->load->view('pie-tomas');
+		$this->load->view('pie-contenido');
 		$this->session->set_userdata('alert');
 		$this->load->view('pie');
 	}
@@ -208,6 +210,8 @@ class Tomas extends CI_Controller {
 	public function eliminar($ubicacion){
 		$this->load->model('tomas_model');
 		$this->tomas_model->eliminar($ubicacion);
+		$alert = "SHC Eliminado.";
+			$this->session->set_userdata('alert', $alert);
 		redirect('tomas');
 		
 	}
