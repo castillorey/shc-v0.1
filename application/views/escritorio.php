@@ -1,5 +1,5 @@
-<div class="row">
-	<div class="col-md-4">
+<div class=" container-fluid row">
+	<div class="col-md-6">
 		<div class="panel panel-default">
 			<div class="panel-body" align="center">
 				<a class="enlace-simple" href="<?php echo site_url('tomas');?>">
@@ -11,7 +11,7 @@
 		</div>
 	</div>
 
-	<div class="col-md-4">
+	<!--<div class="col-md-4">
 		<div class="panel panel-default">
 			<div class="panel-body" align="center">
 				<a class="enlace-simple" href="#">
@@ -21,9 +21,8 @@
 				 
 			</div>
 		</div>
-	</div>
-
-	<div class="col-md-4">
+	</div>-->
+	<div class="col-md-6">
 		<div class="panel panel-default">
 			<div class="panel-body" align="center">
 				<a class="enlace-simple" href="<?php echo site_url('horarios');?>">

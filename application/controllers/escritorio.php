@@ -24,14 +24,14 @@ class Escritorio extends CI_Controller {
 		$data["user"] = $this->session->userdata('usuario');
 		$data["alert"] = $this->session->userdata('alert');
 
-		$this->load->view('cabecera-escritorio',$data);
-		$this->load->view('menu');
-		$this->load->view('cabecera-contenido',$data);
+		$this->load->view('cabecera',$data);
+			$this->load->view('menu');
+			$this->load->view('cabecera-contenido',$data);
 
-				$this->load->view('escritorio');
+					$this->load->view('escritorio');
 
-			$this->session->set_userdata('alert');
-		$this->load->view('pie-contenido');
+				$this->session->set_userdata('alert');
+			$this->load->view('pie-contenido');
 		$this->load->view('pie');
 	}
 

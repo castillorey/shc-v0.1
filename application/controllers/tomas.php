@@ -32,49 +32,28 @@ class Tomas extends CI_Controller {
 		$tomas = $this->tomas_model->listar();
 			
 
-		$this->load->view('cabecera-escritorio',$data);
+		$this->load->view('cabecera',$data);
 		$this->load->view('menu');
-		$this->load->view('cabecera-contenido',$data);
+			$this->load->view('cabecera-contenido',$data);
 
-			$this->load->view('cabecera-tomas',$data);
+				$this->load->view('cabecera-tomas',$data);
 
-			if($tomas != null){
+				if($tomas != null){
 
-				if($data['alert'] != ""){
-					$this->load->view('alert',$data);
-				}
-				
-				foreach ($tomas as $toma){
+					if($data['alert'] != ""){
+						$this->load->view('alert',$data);
+					}
+					
+					foreach ($tomas as $toma){
 
-						$data['tomas'] = $tomas;
-						$data['ubicacion'] = $toma['ubicacion'];
-						$data['nombreD1'] = $toma['dispositivo1']; 
-						$data['nombreD2'] = $toma['dispositivo2']; 
+							$data['tomas'] = $tomas;
+							$data['ubicacion'] = $toma['ubicacion'];
+							$data['colorBg'] = $toma['colorBg'];
+							$data['nombreD1'] = $toma['dispositivo1']; 
+							$data['nombreD2'] = $toma['dispositivo2']; 
 
-						if($toma["estado"] == "1"){
+							// Imagen Dispositivo 1
 
-						//Dispositivo 1
-
-							if($data['nombreD1'] == ""|| $data['nombreD1'] == "tv" || $data['nombreD1'] == "estereo" || $data['nombreD1'] == "lampara" || $data['nombreD1'] == "ventilador" || $data['nombreD1'] == "lavadora" || $data['nombreD1'] == "videojuego" || $data['nombreD1'] == "micro" ){
-
-								$data['imgD1'] = base_url("img/".$toma['dispositivo1']."-green.svg");
-							}else{
-
-								$data['imgD1'] = base_url("img/flash-green.svg");
-							}
-							
-						//Dispositivo 2
-							if($data['nombreD2'] == ""|| $data['nombreD2'] == "tv" || $data['nombreD2'] == "estereo" || $data['nombreD2'] == "lampara" || $data['nombreD2'] == "ventilador" || $data['nombreD2'] == "lavadora" || $data['nombreD2'] == "videojuego" || $data['nombreD1'] == "micro" ){
-
-								$data['imgD2'] = base_url("img/".$toma['dispositivo2']."-green.svg");
-							}else{
-
-								$data['imgD2'] = base_url("img/flash-green.svg");
-							}
-
-						}else{
-
-						//Dispositivo 1
 							if($data['nombreD1'] == ""|| $data['nombreD1'] == "tv" || $data['nombreD1'] == "estereo" || $data['nombreD1'] == "lampara" || $data['nombreD1'] == "ventilador" || $data['nombreD1'] == "lavadora" || $data['nombreD1'] == "videojuego" || $data['nombreD1'] == "micro" ){
 
 								$data['imgD1'] = base_url("img/".$toma['dispositivo1'].".svg");
@@ -83,68 +62,79 @@ class Tomas extends CI_Controller {
 								$data['imgD1'] = base_url("img/flash.svg");
 							}
 
-						//Dispositivo 2
-							if($data['nombreD2'] == ""|| $data['nombreD2'] == "tv" || $data['nombreD2'] == "estereo" || $data['nombreD2'] == "lampara" || $data['nombreD2'] == "ventilador" || $data['nombreD2'] == "lavadora" || $data['nombreD2'] == "videojuego" || $data['nombreD1'] == "micro" ){
+
+							//Imagen Dispositivo 2
+
+							if($data['nombreD2'] == ""|| $data['nombreD2'] == "tv" || $data['nombreD2'] == "estereo" || $data['nombreD2'] == "lampara" || $data['nombreD2'] == "ventilador" || $data['nombreD2'] == "lavadora" || $data['nombreD2'] == "videojuego" || $data['nombreD2'] == "micro" ){
 
 								$data['imgD2'] = base_url("img/".$toma['dispositivo2'].".svg");
 							}else{
 
 								$data['imgD2'] = base_url("img/flash.svg");
 							}
-						}
-						
 
-						//Toma Full
-						if($toma['dispositivo1'] != "" && $toma['dispositivo2'] != ""){
-							$this->load->view('cabecera-panel',$data);
-							$this->load->view('toma-full',$data);	
-						}
-						//Toma vacio
-						else if($toma['dispositivo1'] == "" && $toma['dispositivo2'] == ""){
-							$this->load->view('cabecera-panel',$data);
-							$this->load->view('toma-vacio',$data);
+							//Imagen del Switch
+
+							if($toma["estado"] == "1"){
+
+								$data['imgSwitch'] = base_url("img/switch-on.svg");
+							}else{
+
+								$data['imgSwitch'] = base_url("img/switch-off.svg");
+							}
 							
 
-						}
-						//Toma con Dispositivo 1
-						else if($toma['dispositivo1'] != "" && $toma['dispositivo2'] == ""){
-							$this->load->view('cabecera-panel',$data);
-							$this->load->view('toma-full-izqu',$data);
-							
+							//Toma Full
+							if($toma['dispositivo1'] != "" && $toma['dispositivo2'] != ""){
+								$this->load->view('cabecera-panel',$data);
+								$this->load->view('toma-full',$data);	
+							}
+							//Toma vacio
+							else if($toma['dispositivo1'] == "" && $toma['dispositivo2'] == ""){
+								$this->load->view('cabecera-panel',$data);
+								$this->load->view('toma-vacio',$data);
+								
+
+							}
+							//Toma con Dispositivo 1
+							else if($toma['dispositivo1'] != "" && $toma['dispositivo2'] == ""){
+								$this->load->view('cabecera-panel',$data);
+								$this->load->view('toma-full-izqu',$data);
+								
 
 
-						}
-						//Toma con Dispositivo 2
-						else if($toma['dispositivo1'] == "" && $toma['dispositivo2'] != ""){
-							$this->load->view('cabecera-panel',$data);
-							$this->load->view('toma-full-der',$data);
+							}
+							//Toma con Dispositivo 2
+							else if($toma['dispositivo1'] == "" && $toma['dispositivo2'] != ""){
+								$this->load->view('cabecera-panel',$data);
+								$this->load->view('toma-full-der',$data);
 
-						}
+							}
 
-					$this->load->view('modal-agregar-disp-1',$data);
-					$this->load->view('modal-agregar-disp-2',$data);
-					$this->load->view('modal-editar-disp-1',$data);
-					$this->load->view('modal-editar-disp-2',$data);
-				}
-
-			}else{
-				$this->load->view('sinTomas',$data);
-			}
-				//Modal ver Horarios   						// Modal 3
-				$this->load->view('modal-horarios-cabecera');
-
-					if($data['horarios'] != null){
-						$this->load->view('horarios',$data);
-					}else{
-						$this->load->view('sinHorarios');
+						$this->load->view('modal-agregar-disp-1',$data);
+						$this->load->view('modal-agregar-disp-2',$data);
+						$this->load->view('modal-editar-disp-1',$data);
+						$this->load->view('modal-editar-disp-2',$data);
 					}
-				
-				$this->load->view('modal-horarios-pie',$data);
+
+				}else{
+					$this->load->view('sinTomas',$data);
+				}
+					//Modal ver Horarios   						
+					$this->load->view('modal-horarios-cabecera');// Modal 3
+
+						if($data['horarios'] != null){
+							$this->load->view('horarios',$data);
+						}else{
+							$this->load->view('sinHorarios');
+						}
+					
+					$this->load->view('modal-horarios-pie',$data);
 
 
-			$this->load->view('modal-agregar-horario',$data); //modal 2
-			$this->load->view('modal-tomas',$data); //Modal 1
-		$this->load->view('pie-contenido');
+				$this->load->view('modal-agregar-horario',$data); //modal 2
+				$this->load->view('modal-tomas',$data); //Modal 1
+			$this->load->view('pie-contenido');
 		$this->session->set_userdata('alert');
 		$this->load->view('pie');
 	}
@@ -170,7 +160,7 @@ class Tomas extends CI_Controller {
 			}
 			else if($this->tomas_model->agregar($_POST['txtIdphoton'],$_POST['txtUbicacion'])){
 
-				$alert = "SHC agregado.";
+				$alert = "SHC agregado. ";
 				$this->session->set_userdata('alert', $alert);
 				redirect("tomas");
 			
@@ -184,29 +174,43 @@ class Tomas extends CI_Controller {
 			}	
 		}
 	}
-	public function encender_apagar($ubicacion){
-		$this->load->model('dispositivos_model');
-		$this->dispositivos_model->encender_apagar($ubicacion);
-		redirect('tomas');
+	public function deshabilitar($ubicacion){
+		$this->load->model('tomas_model');
+		if($this->tomas_model->deshabilitar($ubicacion)){
+
+			$alert =  "SHC <b>" .$ubicacion ."</b> deshabilitado";
+			$this->session->set_userdata('alert', $alert);
+			redirect('tomas');
+		}else{
+
+			$alert =  "SHC <b>" .$ubicacion ."</b> ya se encuentra deshabilitado";
+			$this->session->set_userdata('alert', $alert);
+			redirect('tomas');
+		}
+		
+				
 	}
-	public function encender($ubicacion){
-		$this->load->model('dispositivos_model');
-		if(!$this->dispositivos_model->encender($ubicacion)){
-			$alert = "El dispositivo ya se encuentra encendido";
+	public function habilitar($ubicacion){
+		$this->load->model('tomas_model');
+		if(!$this->tomas_model->habilitar($ubicacion)){
+			$alert = "El dispositivo ya se encuentra habilitado";
 			$this->session->set_userdata('alert',$alert);
 		}
 			
 		redirect('tomas');
 	}
-	public function apagar($ubicacion){
-		$this->load->model('dispositivos_model');
-		if(!$this->dispositivos_model->apagar($ubicacion)){
-			$alert = "El dispositivo ya se encuentra apagado";
+
+	public function habilitar_deshabilitar($ubicacion){
+		$this->load->model('tomas_model');
+
+		if(!$this->tomas_model->habilitar_deshabilitar($ubicacion)){
+			$alert = "Error al habilitar/deshabilitar ".$ubicacion."";
 			$this->session->set_userdata('alert',$alert);
 		}
-		
+
 		redirect('tomas');
 	}
+	
 	public function eliminar($ubicacion){
 		$this->load->model('tomas_model');
 		$this->tomas_model->eliminar($ubicacion);

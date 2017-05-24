@@ -12,10 +12,12 @@
 
     <!-- font icon -->
     <link href="<?php echo base_url('css/font-awesome.min.css'); ?>" rel="stylesheet" /> 
-    <!--Mis estilos-->
-    <link href="<?php echo base_url().'css/login.css'; ?>" rel="stylesheet">
+    
+    <link href="<?php echo base_url('css/sidebar.css'); ?>" rel="stylesheet" /> 
+    <link href="<?php echo base_url('css/mystyle.css'); ?>" rel="stylesheet" /> 
+    
 
-	<title>SHC-v0.1</title>
+	<title>SHC v0.1</title>
 </head>
   
   <style>
@@ -25,46 +27,6 @@
     
   </style>
 
-<body>
+<body style="background: #ededed;">
+	<div class="col-xs-12">
   
-<header style="margin-bottom: 20px;">
-  <!-- Navegador -->
-  <nav class="navbar  navbar-fixed-top navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">SHC</a>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="nav-item <?php echo $login; ?>">
-              <a class="nav-link" href="<?php echo site_url('login'); ?>">Iniciar sesión</a>
-          </li>
-          <li class="nav-item <?php echo $signin; ?>">
-              <a class="nav-link" href="<?php echo site_url('signin'); ?>">Registrarse</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</header>
-
-  <div class="container-fluid">
-    <div class="row">
-  
-
-
-	
-
-          
-
-          
-
-          
-
-	

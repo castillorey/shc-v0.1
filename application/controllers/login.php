@@ -20,14 +20,14 @@ class Login extends CI_Controller {
 		$data["signin"]= "";
 		$data["alert"] = $this->session->userdata('alert');
 
-		$this->load->view('cabecera',$data);
+		$this->load->view('cabecera-log-sign',$data);
 		
 		if($data['alert'] != ""){
 			$this->load->view('alert',$data);
 		}
 		$this->load->view('login',$data);
 		$this->session->set_userdata('alert');
-		$this->load->view('pie');
+		$this->load->view('pie-log-sign');
 	}
 	public function ingresar(){
 		if($this->input->post("btnEntrar")){	

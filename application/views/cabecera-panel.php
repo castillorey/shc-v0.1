@@ -12,7 +12,7 @@
             
             <a class="delete" type="button" href="<?php echo site_url('tomas/eliminar/'.$ubicacion.''); ?>" title="Eliminar SHC"><i class="fa fa-trash-o" data-toggle="tooltip" data-placement="left" title="Eliminar SHC"></i></a>
             &nbsp;
-            <a type="button" href="<?php echo site_url('horarios/verificar/'.$ubicacion.''); ?>" title="Eliminar SHC"><i class="fa fa-check" data-toggle="tooltip" data-placement="right" title="Verificar horario"></i></a>
+            <a type="button" href="<?php echo site_url('horarios/validarHorario/'.$ubicacion.''); ?>" title="validar horario"><i class="fa fa-check" data-toggle="tooltip" data-placement="right" title="validar horario"></i></a>
           </div> 
 
           <div class="clearfix"></div>

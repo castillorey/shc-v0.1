@@ -1,19 +1,33 @@
         <div class="panel-body">
           <div class="toma-box">
-	          	<div class="superior">
+	          	<div class="superior" style="background-color: <?php echo $colorBg;?> ;">
 	          		<h3><?php echo $ubicacion;?></h3>
 	          	</div>
 	          	<!-- Dispositivos-->
 	          	<ul>
 	          		<!-- Dispositivo 1-->
 	          		<li>
-	          			<button class="btn btn-link" data-toggle="modal" data-target="#<?php echo $ubicacion.'ModalDisp1';?>">
-							<img id="imagen1" width="60px" src="<?php echo base_url('img/socket.svg'); ?>" alt="Dispositivo1" >
-						</button>
-	          			<br>
+	          			<div class="row">
+	          				<button class="btn btn-link" data-toggle="modal" data-target="#<?php echo $ubicacion.'ModalDisp1';?>">
+								<img id="imagen1" width="60px" src="<?php echo base_url('img/socket.svg'); ?>" alt="Dispositivo1" >
+							</button>
+	          			</div>
 	          			<span>Agregar</span>
 	          		</li>
 
+	          		<!-- Switches-->
+	          		<li>
+		          		<div class="row">
+		          			<a class="btn btn-link" href="<?php echo site_url('tomas/habilitar_deshabilitar/'.$ubicacion.''); ?>" name="btnOnOff">
+		          				<img class="centrar" id="imgSwitch" width="35px" src="<?php echo $imgSwitch;?>" alt="Switch" >
+		          			</a>
+		          		</div>
+	          			
+	          			<div class="row">
+	          				<span >Habilitar/<br>Deshabilitar</span>
+	          			</div>
+	          		</li>
+	          		
 	          		<!-- Dispositivo 2-->
 	          		<li>
 	          			<div class="row">
@@ -25,9 +39,8 @@
 	          				  <a class="delete" type="button" href="<?php echo site_url('dispositivos/eliminar/dispositivo2/'.$nombreD2.'/'.$ubicacion); ?>" title="Eliminar Dispositivo 2"><i class="fa fa-trash-o" data-toggle="tooltip" data-placement="left" title="Eliminar dispositivo 2"></i></a>
 	          				</div>
 	          			</div>
-	          			<a class="btn btn-link" href="<?php echo site_url('tomas/encender_apagar/'.$ubicacion.''); ?>" name="btnOnOff">
+
 	          				<img id="imagen2" width="60px" src="<?php echo $imgD2;?>" alt="Dispositivo2" >
-	          			</a>
 	          			<br>
 	          			<span ><?php echo $nombreD2;?></span>
 	          		</li>

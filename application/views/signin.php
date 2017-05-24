@@ -5,6 +5,16 @@
 					<div class="form-group">
 				        <div class="input-group">
 				        	<span class="input-group-addon">
+				        	  <i class="fa fa-key" aria-hidden="true"></i>
+				        	</span> 
+
+				        	<input class="form-control" placeholder="Codigo de registro" type="text" id="codigo" name="txtCodigo" required autofocus>
+				        </div>
+					</div>
+
+					<div class="form-group">
+				        <div class="input-group">
+				        	<span class="input-group-addon">
 				        	  <i class="fa fa-user" aria-hidden="true"></i>
 				        	</span> 
 				        	<input class="form-control" placeholder="ejemplo@correo.com" type="email" id="usuario" name="txtCorreo" required autofocus>

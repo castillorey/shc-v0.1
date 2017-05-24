@@ -1,3 +1,3 @@
 		</div>
-	</div>	
+	</main>
 </div>

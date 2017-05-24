@@ -1,58 +1,35 @@
+
 <!-- Menu -->
-<div class="side-menu">
-	<nav class="navbar navbar-default" role="navigation">
-	    <!-- Brand and toggle -->
-	    <div class="navbar-header">
-	        <div class="brand-wrapper">
-	            <!-- Hamburger -->
-	            <button type="button" class="navbar-toggle">
-	                <span class="sr-only">Toggle navigation</span>
-	                <span class="icon-bar"></span>
-	                <span class="icon-bar"></span>
-	                <span class="icon-bar"></span>
-	            </button>
+<nav class="menu" tabindex="0">
+  	<div class="smartphone-menu-trigger"></div>
+    <header>
+      <div class="avatar">
+        <img src="<?php echo base_url('img/man.svg'); ?>" />
+        <div><span><h4><?php echo $user;?></h4></span></div> 
+      </div>
+    </header>
 
-	            <!-- Brand -->
-	            <div class="brand-name-wrapper">
-	                <a class="navbar-brand" href="#">
-	                    SHC
-	                </a>
-	            </div>
-	        </div>
-	    </div>
+    <div class="container-fluid label-menuPrincipal">
+    	<span><h4>Menú</h4></span>
+    </div>
+  	<ul>
+        <a href="<?php echo site_url('tomas');?>">
+      		<li tabindex="0" class="<?php echo $seccionSHC;?> icon-shc">
+      			<span> <h5>SHC's</h5></span>
+      		</li>
+        </a>
 
-		<hr>
-	    <!-- Main Menu -->
-	    <div class="side-menu-container">
-	    	
-	    	
-	        <ul class="nav navbar-nav">
+        <a href="<?php echo site_url('horarios'); ?>">
+        	<li tabindex="0" class="<?php echo $seccionHorarios;?> icon-horarios">
+        		<span> <h5>Horarios</h5></span> 
+        	</li>
+        </a>
 
-		    	<!-- Admin info -->
-		    	<br>
-			    <div class="row">
-			    	<div align="center" class="col-xs-4">
-			    	  <img width="46px" src="<?php echo base_url('img/man.svg'); ?>">
-			    	</div>
-			    	<div class="col-xs-8">
-			    	  <span>Bienvenido, <strong><?php echo $user;?></strong></span><br>
-			    	  <a href="#" ><i class="fa fa-user"></i></a>&nbsp;
-			    	  <a href="#" ><i class="fa fa-cog"></i></a>
-			    	</div>
-			    </div>
+      	<a href="<?php echo site_url('logout'); ?>">
+          <li tabindex="0" class="label-cerrarSesion icon-close">
+      		  <span> <h5>Cerrar sesión</h5></span> 
+          </li>
+        </a>
+    </ul>
+</nav>
 
-				<div class="container-fluid" style="background-color: gray;">
-					<h4 style="color:white;">Escritorio</h4>
-				</div>
-
-	            <li class="<?php echo $seccionSHC;?>"><a href="<?php echo site_url('tomas');?>"><span class="glyphicon glyphicon-flash"></span> SHC's</a></li>
-	            <li class="<?php echo $seccionDisp;?>"><a href="#"><span class="glyphicon glyphicon-lamp"></span> Dispositivos</a></li>
-	            <li class="<?php echo $seccionHorarios;?>"><a href="<?php echo site_url('horarios'); ?>"><span class="glyphicon glyphicon-calendar"></span> Horarios</a></li>
-
-
-	            <li style="background-color: #d9534f;"><a style="color:white;" href="<?php echo site_url('logout'); ?>"><span class="glyphicon glyphicon-remove"></span> Cerrar sesión</a></li>
-
-	        </ul>
-	    </div><!-- /.navbar-collapse -->
-	</nav> 
-</div>

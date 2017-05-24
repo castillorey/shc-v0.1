@@ -1,16 +1,16 @@
 /*Estilo enlaces
 */
-.enlace-simple{
-    text-decoration:none;
+.enlace-simple {
     color: #4d4d4d;
 }
-
+a:link, a:visited {  
+    text-decoration: none;
+}
 
 /* .toma-box
 
 =================================================================== */  
 .toma-box{
-
     min-height: 150px;
     background: white;
     margin-bottom: 20px;
@@ -20,9 +20,9 @@
 .toma-box .superior{
     padding-top: 15px;
     display: block;
-    background: #f5f5f5;
 }
 .toma-box .superior h3{
+    color: white;
     text-transform: uppercase;
     margin-top: -20px;
     line-height: 90px;
@@ -35,22 +35,17 @@
 
 }
 
-.toma-box ul li {
+.toma-box ul li { 
+
+    text-align: center;
 
     display: block;
 
-    width: 50%;
+    width: 33%;
 
     float: left;
 
 }
-
-.toma-box ul li:first-child {
-
-    border-right: 1px solid #f5f5f5;
-
-}
-
 
 .toma-box ul li span {
 
@@ -63,6 +58,15 @@
     font-size: 10px;
 
 }
+
+/*.toma-box ul li:first-child {
+
+    border-right: 1px solid #f5f5f5;
+
+}*/
+
+
+
 /* Modals CSS*/
 .modal-green{
     background-color: #5cb85c;
@@ -76,11 +80,14 @@
     background-color: #34aadc;
     color:white !important;
 }
-/*Buttons CSS*/
+/*Botonea CSS*/
 
 .delete{
     color:#d9534f;
 }  
+.botones-esp{
+    margin-bottom: 50px;
+}
 .btn-fixed {
 
     position: fixed;
@@ -126,6 +133,85 @@
     display: inline-block;
     line-height: 37px;
     color: #fff;
+}
+@media screen and (min-width: 1250px){
+    .botones-esp{
+        margin-bottom: 15px;
+    }
+}
+@media screen and (max-width: 400px){
+    .boton-horarios{
+        display: none;
+    }
+}
+/* Alert */
+.flotante {
+    display:scroll;
+    position:fixed;
+    top:30px;
+    right:20px;
+}
+.alertShake{
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+.alertFade{
+
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+         -o-animation: fadein 2s; /* Opera < 12.1 */
+            animation: fadein 2s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 

@@ -23,24 +23,26 @@ class Horarios extends CI_Controller {
 
 	$this->load->model('horarios_model');
 
-	$this->load->view('cabecera-escritorio',$data);
-	$this->load->view('menu');
-	$this->load->view('cabecera-contenido',$data);
+	$this->load->view('cabecera',$data);
+		$this->load->view('menu');
 
-	$data["horarios"] = $this->horarios_model->listar();
+		$this->load->view('cabecera-contenido',$data);
 
-		if($data['horarios'] != null){
-			$this->load->view('horarios',$data);
-		}else{
-			$this->load->view('sinHorarios');
-		}
+			$data["horarios"] = $this->horarios_model->listar();
 
-		$this->load->view('modal-horarios-cabecera');		
-		$this->load->view('modal-horarios-pie',$data);	
-		$this->load->view('modal-agregar-horario',$data);
+			if($data['horarios'] != null){
+				$this->load->view('horarios',$data);
+			}else{
+				$this->load->view('sinHorarios');
+			}
+
+			$this->load->view('modal-horarios-cabecera');		
+			$this->load->view('modal-horarios-pie',$data);	
+			$this->load->view('modal-agregar-horario',$data);
+			
+		$this->load->view('pie-contenido');
 		
-	$this->load->view('pie-contenido');
-	$this->session->set_userdata('alert');
+		$this->session->set_userdata('alert');
 	$this->load->view('pie');
 	}
 
@@ -61,6 +63,8 @@ class Horarios extends CI_Controller {
 			else{
 
 				if($this->horarios_model->agregar($this->input->post("cmbDias"),$this->input->post("txtHoraInicio"),$this->input->post("txtHoraFin"),$this->input->post("txtUbicacionTomas"))){
+					$alert = "Horario agregado";
+					$this->session->set_userdata('alert', $alert);
 					redirect("tomas");
 				}
 			}
@@ -80,14 +84,14 @@ class Horarios extends CI_Controller {
 	public function listarUbicaciones(){
 		$this->load->model('horarios_model');
 	}
-	public function verificar($ubicacion){
+	public function validarHorario($ubicacion){
 		$this->load->model('horarios_model');
 
 		if($this->horarios_model->verificar()){
-			redirect('tomas/encender_apagar/'.$ubicacion);
+			redirect('tomas/deshabilitar/'.$ubicacion);
 		}
 		else{
-			$alert = "No hay horarios por cumplir";
+			$alert = "No hay horarios por cumplir para <b>" .$ubicacion."</b>";
 			$this->session->set_userdata('alert', $alert);
 			redirect('tomas');
 		}

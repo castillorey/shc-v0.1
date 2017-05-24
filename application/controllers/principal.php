@@ -9,7 +9,7 @@ class Principal extends CI_Controller {
 		$data["login"]= "";
 		$data["signin"]= "";
 		$data["disp"]= "";
-		$this->load->view('cabecera',$data);
+		$this->load->view('cabecera-log-sign',$data);
 		$this->load->view('login');		
 		$this->load->view('pie');
 	}

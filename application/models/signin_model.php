@@ -12,12 +12,31 @@ class Signin_model extends CI_Model {
 			$this->db->where('correo', $correo);
 			$result=$this->db->get();
 			$cantidad=$result->result_array();
+
 			if($cantidad[0]["cantidad"]==0){
 				$this->db->insert('usuarios', array("correo"=>$correo,"password"=>$password));
 
 				$retorno=true;
 			}
 		}
+		return $retorno;
+	}
+
+	public function validarCodigo($codigo){
+		
+		$retorno = false;
+
+			$this->db->select('count(*) as cantidad');
+			$this->db->from('codigos');
+			$this->db->where('codigo', $codigo);
+			$result=$this->db->get();
+			$cantidad=$result->result_array();
+
+			if(!$cantidad[0]["cantidad"]==0){
+				
+				$retorno=true;
+			}
+
 		return $retorno;
 	}
 }
